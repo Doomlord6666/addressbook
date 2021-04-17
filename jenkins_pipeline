@@ -1,0 +1,40 @@
+  pipeline {
+      agent {
+          label 'master'
+      }
+      
+      tools {
+          maven 'mymaven'
+          jdk 'myjava' 
+      }
+      
+    stages {
+        stage ('Checkout the code'){
+            steps{
+                git branch: 'master', url: 'https://github.com/Doomlord6666/addressbook.git'
+
+            }
+        }
+        stage ('Code Compile'){
+            steps{
+                sh """
+                echo compile the 
+                mvn compile
+                """
+            }
+
+        }
+       
+        }
+        stage ('Package the code'){
+            steps{
+                sh"""
+                mvn package
+                """
+            }
+
+        }
+        
+        
+    }
+  }
