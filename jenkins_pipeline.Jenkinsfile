@@ -9,18 +9,17 @@ pipeline {
     }
       
     stages {
-
-        stage ('Code Compile 1'){
-            steps{
-                sh """
-                echo compile the 
-                mvn compile
-                """
-            }
-        }
-
         stage ('Run in parallel'){
             parallel{
+                stage ('Code Compile 1'){
+                    steps{
+                        sh """
+                        echo compile the 
+                        mvn compile
+                        """
+                    }
+                }
+
                 stage ('Code Validate 1'){
                     steps{
                         sh """
