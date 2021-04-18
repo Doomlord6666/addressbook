@@ -23,8 +23,7 @@ pipeline {
             steps{
                 sh """
                 mvn validate
-                """
-                }              
+                """             
             }                              
         }    
      
