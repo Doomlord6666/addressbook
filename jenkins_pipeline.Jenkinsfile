@@ -36,7 +36,6 @@ pipeline {
                 echo demo
                 """
             }
-
         } 
 
         stage ('JUNIT Test'){
@@ -46,7 +45,6 @@ pipeline {
                 mvn test
                 """
             }
-
         }   
 
         stage ('Package the code'){
@@ -55,7 +53,6 @@ pipeline {
                 mvn package
                 """
             }
-
         }
     }
   }
