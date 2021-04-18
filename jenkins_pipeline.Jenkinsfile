@@ -21,6 +21,7 @@ pipeline {
         }
 
         stage ('Parallel block'){
+            steps{
                 Parallel{
                     stage ('Code Compile 1'){
                         steps{
@@ -42,6 +43,7 @@ pipeline {
                         }
                     }
                 }
+              }
             }            
                   
         }    
