@@ -19,19 +19,13 @@ pipeline {
             }
         }
 
-        stage ('Parallel block'){
+        stage ('Code Validate 1'){
             steps{
-                Parallel{
-                    stage ('Code Validate 1'){
-                        steps{
-                          sh """
-                          mvn validate
-                          """
-                        }
-                    }
-                }
-            }            
-                  
+                sh """
+                mvn validate
+                """
+                }              
+            }                              
         }    
      
         stage ('Test errorcatch'){
