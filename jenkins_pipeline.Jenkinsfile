@@ -21,7 +21,7 @@ pipeline {
         }
 
         stage ('Parallel block'){
-                  Parallel{
+                Parallel{
                     stage ('Code Compile 1'){
                         steps{
                           catchError (buildResult: 'SUCCESS',stageResult: 'FAILURE'){
@@ -31,18 +31,19 @@ pipeline {
                           """
                           }
                         } 
-                    } 
+                    }
+
                     stage ('Code Validate 1'){
                         steps{
                           catchError (buildResult: 'SUCCESS',stageResult: 'FAILURE'){
                           sh """
                           mvn validate
                           """
-                          }
                         }
                     }
-                }            
-            }           
+                }
+            }            
+                  
         }    
      
         stage ('Test errorcatch'){
