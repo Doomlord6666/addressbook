@@ -1,12 +1,12 @@
 pipeline {
-      agent {
+    agent {
           label 'master'
-      }
+    }
       
-      tools {
+    tools {
           maven 'mymaven'
           jdk 'myjava' 
-      }
+    }
       
     stages {
         stage ('Code Compile'){
@@ -21,6 +21,15 @@ pipeline {
 
         }
         
+        stage ('Test errorcatch'){
+            steps{
+                sh"""
+                echo demo
+                """
+            }
+
+        } 
+
         stage ('JUNIT Test'){
             steps{
                 sh """
@@ -31,14 +40,8 @@ pipeline {
 
         }   
        
-          stage ('Test errorcatch'){
-            steps{
-                sh"""
-                echo demo
-                """
-            }
 
-        }     
+
         stage ('Package the code'){
             steps{
                 sh"""
