@@ -12,12 +12,10 @@ pipeline {
 
         stage ('Code Compile 1'){
             steps{
-                catchError (buildResult: 'SUCCESS',stageResult: 'FAILURE'){
                 sh """
                 echo compile the 
                 mvn compile
                 """
-                }
             }
         }
 
@@ -26,11 +24,9 @@ pipeline {
                 Parallel{
                     stage ('Code Validate 1'){
                         steps{
-                          catchError (buildResult: 'SUCCESS',stageResult: 'FAILURE'){
                           sh """
                           mvn validate
                           """
-                          }
                         }
                     }
                 }
