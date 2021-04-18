@@ -21,8 +21,7 @@ pipeline {
         }
 
         stage ('Parallel block'){
-            steps{
-                Parallel(
+                  Parallel{
                     stage ('Code Compile 1'){
                         steps{
                           catchError (buildResult: 'SUCCESS',stageResult: 'FAILURE'){
@@ -41,9 +40,9 @@ pipeline {
                           """
                           }
                         }
-                    }            
-                )        
-            }
+                    }
+                }            
+            }           
         }    
      
         stage ('Test errorcatch'){
